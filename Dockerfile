@@ -3,7 +3,7 @@ RUN apt-get update
 RUN apt-get install -y --no-install-recommends git zip libsqlite3-dev zlib1g-dev
 RUN docker-php-ext-install zip
 RUN curl --silent --show-error https://getcomposer.org/installer | php
-RUN ./composer.phar install -n --prefer-dist
+RUN php composer.phar install -n --prefer-dist
 RUN touch storage/testing.sqlite storage/database.sqlite
 RUN cp .env.testing .env
 RUN php artisan migrate
