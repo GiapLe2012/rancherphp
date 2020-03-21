@@ -1,7 +1,7 @@
 FROM php:7.2
 RUN apt-get update
 RUN apt-get install -y --no-install-recommends git zip libsqlite3-dev zlib1g-dev
-RUN docker-php-ext-install zip
+RUN docker-php-ext-install zip && docker-php-ext-install phpunit
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 COPY composer.json composer.json
 RUN php composer.phar require "codeception/codeception"
