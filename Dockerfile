@@ -4,7 +4,8 @@ RUN apt-get install -y --no-install-recommends git zip libsqlite3-dev zlib1g-dev
 RUN docker-php-ext-install zip
 RUN curl --silent --show-error https://getcomposer.org/installer | php
 COPY composer.json composer.json
-RUN php composer.phar install -n --prefer-dist "codeception/codeception"
+RUN php composer.phar require "codeception/codeception"
+RUN php composer.phar install -n --prefer-dist 
 RUN touch storage/testing.sqlite storage/database.sqlite
 RUN cp .env.testing .env
 RUN php artisan migrate
